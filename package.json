@@ -1,0 +1,24 @@
+{
+  "name": "vidly-app",
+  "version": "1.0.0",
+  "description": "A service for renting out movies: joi is used for validation, mongoDB is used on the backend. We used mongoose to utilize mongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "express",
+    "joi",
+    "nodemon",
+    "mongoose"
+  ],
+  "author": "Anoshka Tariq",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.3.0",
+    "mongoose": "^5.11.13",
+    "nodemon": "^2.0.7"
+  }
+}
