@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const customer = await Customer.findById(req.params.id);
     if (!customer) return res.status(404).send('the customer with the given ID is not found');
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -61,7 +61,7 @@ router.delete('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const customer = await Customer.findByIdAndDelete(req.params.id);
     if (!customer) return res.status(404).send('The cutomer with the given ID is not found');

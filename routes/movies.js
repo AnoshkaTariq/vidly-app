@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const movie = await Movie.findById(req.params.id);
     if (!movie) return res.status(404).send('The movie with the given ID is not found');
@@ -29,10 +29,6 @@ router.post('/', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-
-    // validating genreId
-    if (!mongoose.Types.ObjectId.isValid(req.body.genreId))
-        return res.send('Given ID is not valid format.....');
 
     const genre = await Genre.findById(req.body.genreId);
     if (!genre) return res.status(400).send('The genre with the give ID does not exist');
@@ -58,7 +54,7 @@ router.put('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -91,7 +87,7 @@ router.delete('/:id', async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-        return res.send('Given id is not valid');
+        return res.status(400).send('Given id is not valid');
 
     const movie = await Movie.findByIdAndDelete(req.params.id, { useFindAndModify: false });
     if (!movie) return res.status(404).send('The movie with the given ID is not found');
