@@ -1,7 +1,7 @@
 {
   "name": "vidly-app",
   "version": "1.0.0",
-  "description": "A service for renting out movies: joi is used for validation, mongoDB is used on the backend. We used mongoose to utilize mongoDB",
+  "description": "A service for renting out movies: joi is used for validation, mongoDB is used on the backend. We used mongoose to utilize mongoDB, jsonwebtoken is used to create token and login, use config to store json web token private key in the environment variable",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,15 +13,23 @@
     "nodemon",
     "mongoose",
     "fawn",
-    "joi-objectid"
+    "joi-objectid",
+    "bcrypt",
+    "jsonwebtoken",
+    "config"
   ],
   "author": "Anoshka Tariq",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.3",
     "express": "^4.17.1",
     "fawn": "^2.1.5",
     "joi": "^17.3.0",
     "joi-objectid": "^3.0.1",
+    "joi-password-complexity": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
     "mongoose": "^5.11.13",
     "nodemon": "^2.0.7"
   }
