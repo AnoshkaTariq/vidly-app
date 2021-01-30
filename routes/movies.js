@@ -1,5 +1,7 @@
 const { Movie, validate } = require('../models/movie');
 const { Genre } = require('../models/genre');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -24,7 +26,7 @@ router.get('/:id', async (req, res) => {
     return res.send(movie);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -49,7 +51,7 @@ router.post('/', async (req, res) => {
 
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
 
 
     // validating incoming Id
@@ -83,7 +85,7 @@ router.put('/:id', async (req, res) => {
     return res.send(movie);
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [auth, admin], async (req, res) => {
 
     // validating incoming Id
     if (!mongoose.Types.ObjectId.isValid(req.params.id))

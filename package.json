@@ -10,10 +10,12 @@
     "npm",
     "express",
     "joi",
+    "joi-objectid",
+    "joi-password-complexity",
     "nodemon",
     "mongoose",
     "fawn",
-    "joi-objectid",
+    "lodash",
     "bcrypt",
     "jsonwebtoken",
     "config"
