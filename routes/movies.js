@@ -7,8 +7,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 
-
-
 router.get('/', async (req, res) => {
     const movies = await Movie.find().sort('name');
     return res.send(movies);
