@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const winston = require('winston');
+const config = require('config');
 
 module.exports = function () {
-    mongoose.connect('mongodb://localhost:27017/vidly', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    const db = config.get('db');
+    mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
         .then(() => winston.info('Connected to mongoDB'));
 };
