@@ -17,7 +17,7 @@ module.exports = function (app) {
     app.use('/api/rentals', rentals);
     app.use('/api/users', users);
     app.use('/api/auth', auth);
-    app.use('', (req, res) => {
+    app.get('', (req, res) => {
         res.send('Hi there!!!');
     });
     // error handler for faulty input json and other unhandled promises
